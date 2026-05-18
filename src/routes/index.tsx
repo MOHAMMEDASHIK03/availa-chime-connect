@@ -109,35 +109,56 @@ function Index() {
     setBookOpen(true);
   };
 
-  const confirmBooking = () => {
+  const confirmBooking = async () => {
     if (selected.length === 0) return;
-    if (!phone.trim() || phone.trim().length < 8) {
-      setFormError("Please enter a valid phone number.");
-      return;
-    }
-    if (!bookingDate) {
-      setFormError("Please choose a preferred date.");
-      return;
-    }
-    if (!bookingTime) {
-      setFormError("Please choose an available time slot.");
-      return;
-    }
-    if (locationType === "home" && !address.trim()) {
-      setFormError("Please enter your address for the home visit.");
-      return;
-    }
+    if (!customerName.trim()) { setFormError("Please enter your name."); return; }
+    if (!phone.trim() || phone.trim().length < 8) { setFormError("Please enter a valid phone number."); return; }
+    if (!bookingDate) { setFormError("Please choose a preferred date."); return; }
+    if (!bookingTime) { setFormError("Please choose an available time slot."); return; }
+    if (locationType === "home" && !address.trim()) { setFormError("Please enter your address for the home visit."); return; }
     setFormError("");
-    const lines = allServices
+    setSubmitting(true);
+
+    const servicesPayload = allServices
       .filter((s) => selected.includes(s.name))
-      .map((s) => `• ${s.name} — AUD $${s.price}`)
-      .join("\n");
-    const locationLine =
-      locationType === "studio"
-        ? "Location: At your studio"
-        : `Location: Home service — ${address.trim()}`;
-    const msg = `G'day Glamupbykirthi, I'd like to book the following service${selected.length > 1 ? "s" : ""}:\n\n${lines}\n\nTotal: AUD $${total}\n\nPhone: ${phone.trim()}\nPreferred date: ${bookingDate}${bookingTime ? ` at ${bookingTime}` : ""}\n${locationLine}\n\nCould you please confirm availability? Cheers!`;
+      .map((s) => ({ name: s.name, price: s.price }));
+
+    const { data, error } = await supabase
+      .from("bookings")
+      .insert({
+        customer_name: customerName.trim(),
+        phone: phone.trim(),
+        services: servicesPayload,
+        total_amount: total,
+        booking_date: bookingDate,
+        booking_time: bookingTime,
+        location_type: locationType,
+        address: locationType === "home" ? address.trim() : "",
+      })
+      .select("id")
+      .single();
+
+    setSubmitting(false);
+
+    if (error || !data) {
+      setFormError("Could not submit booking. Please try again or contact us on WhatsApp.");
+      return;
+    }
+
+    rememberBooking(data.id);
+
+    const lines = servicesPayload.map((s) => `• ${s.name} — AUD $${s.price}`).join("\n");
+    const locationLine = locationType === "studio" ? "Location: At the studio" : `Location: Home — ${address.trim()}`;
+    const msg = `New booking request (ID: ${data.id.slice(0, 8)})\n\nName: ${customerName.trim()}\nPhone: ${phone.trim()}\n\nServices:\n${lines}\n\nTotal: AUD $${total}\nDate: ${bookingDate} at ${bookingTime}\n${locationLine}\n\nPlease confirm availability.`;
+
+    // Open WhatsApp to owner with prefilled details
     window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+    // Open mailto to owner as backup notification channel
+    const mailto = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent("New booking request — Glamupbykirthi")}&body=${encodeURIComponent(msg)}`;
+    setTimeout(() => { window.open(mailto, "_self"); }, 400);
+
+    setBookOpen(false);
+    setSelected([]);
   };
 
   useEffect(() => {
