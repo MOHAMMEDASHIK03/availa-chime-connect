@@ -742,3 +742,84 @@ function BookingRow({ s, checked, onToggle }: { s: { name: string; price: number
     </label>
   );
 }
+
+type BookingStatusRow = {
+  id: string;
+  status: "pending" | "confirmed" | "declined";
+  customer_name: string;
+  booking_date: string;
+  booking_time: string;
+  total_amount: number;
+  admin_note: string;
+};
+
+function MyBookingsStatus() {
+  const [items, setItems] = useState<BookingStatusRow[]>([]);
+  const [dismissed, setDismissed] = useState(false);
+
+  const load = async () => {
+    const ids = listLocalBookings().map((b) => b.id);
+    if (ids.length === 0) { setItems([]); return; }
+    const { data } = await supabase
+      .from("bookings")
+      .select("id,status,customer_name,booking_date,booking_time,total_amount,admin_note")
+      .in("id", ids)
+      .order("created_at", { ascending: false });
+    setItems((data ?? []) as BookingStatusRow[]);
+  };
+
+  useEffect(() => {
+    load();
+    const ch = supabase
+      .channel("my-bookings-status")
+      .on("postgres_changes", { event: "UPDATE", schema: "public", table: "bookings" }, () => load())
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "bookings" }, () => load())
+      .subscribe();
+    const onStorage = () => load();
+    window.addEventListener("storage", onStorage);
+    const t = setInterval(load, 8000);
+    return () => { supabase.removeChannel(ch); window.removeEventListener("storage", onStorage); clearInterval(t); };
+  }, []);
+
+  if (dismissed || items.length === 0) return null;
+
+  return (
+    <div className="fixed bottom-24 right-6 z-40 w-[min(360px,calc(100vw-3rem))] glass rounded-2xl shadow-luxe border border-border overflow-hidden animate-fade-up">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/60">
+        <p className="text-xs uppercase tracking-widest font-bold text-black">Your Bookings</p>
+        <button onClick={() => setDismissed(true)} aria-label="Hide" className="p-1 rounded-full hover:bg-background/60">
+          <X className="h-4 w-4 text-black" />
+        </button>
+      </div>
+      <ul className="max-h-[300px] overflow-y-auto divide-y divide-border">
+        {items.map((b) => (
+          <li key={b.id} className="px-4 py-3 text-sm">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-bold text-black truncate">{b.customer_name || "Booking"}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{b.booking_date} · {b.booking_time}</p>
+                <p className="text-xs text-muted-foreground">AUD ${b.total_amount}</p>
+              </div>
+              <StatusPill status={b.status} />
+            </div>
+            {b.status === "pending" && (
+              <p className="mt-2 text-[11px] text-muted-foreground italic">Waiting for owner to confirm availability…</p>
+            )}
+            {b.status === "confirmed" && (
+              <p className="mt-2 text-[11px] text-green-700 font-bold">Confirmed! See you soon.{b.admin_note ? ` — ${b.admin_note}` : ""}</p>
+            )}
+            {b.status === "declined" && (
+              <p className="mt-2 text-[11px] text-red-600 font-bold">Sorry, this slot isn't available.{b.admin_note ? ` ${b.admin_note}` : ""}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function StatusPill({ status }: { status: "pending" | "confirmed" | "declined" }) {
+  if (status === "confirmed") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-green-700 bg-green-100 px-2 py-1 rounded-full"><CheckCircle2 className="h-3 w-3" /> Confirmed</span>;
+  if (status === "declined") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-red-600 bg-red-100 px-2 py-1 rounded-full"><XCircle className="h-3 w-3" /> Declined</span>;
+  return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-1 rounded-full"><Loader2 className="h-3 w-3 animate-spin" /> Pending</span>;
+}
