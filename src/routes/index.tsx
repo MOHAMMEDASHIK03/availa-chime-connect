@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import {
   Menu, X, Sparkles, Crown, Heart, Star, MapPin, Clock, Phone,
   Instagram, Facebook, Mail, ChevronDown, ChevronLeft, ChevronRight,
-  ShieldCheck, Brush, Gem, Palette
+  ShieldCheck, Brush, Gem, Palette, CheckCircle2, XCircle, Loader2
 } from "lucide-react";
 import brushesBg from "@/assets/brushes-bg.jpg";
-import { useContent } from "@/lib/content-store";
+import { useContent, useGallery } from "@/lib/content-store";
+import { supabase } from "@/integrations/supabase/client";
+import { rememberBooking, listLocalBookings } from "@/lib/local-bookings";
 import bridal from "@/assets/bridal.jpg";
 import softglam from "@/assets/softglam.jpg";
 import bridalhair from "@/assets/bridalhair.jpg";
@@ -22,12 +24,13 @@ import gallery2 from "@/assets/gallery2.jpg";
 export const Route = createFileRoute("/")({ component: Index });
 
 const WA = "61481308396";
+const OWNER_EMAIL = "Kiruthikak402@gmail.com";
 const waLink = (svc?: string) =>
   `https://wa.me/${WA}?text=${encodeURIComponent(
     svc ? `Hello Glamupbykirthi, I would like to book ${svc} service.` : "Hello Glamupbykirthi, I'd like to enquire about your services."
   )}`;
 
-const galleryImgs = [
+const fallbackGallery = [
   { src: bridal, h: "row-span-2" },
   { src: gallery1, h: "" },
   { src: softglam, h: "" },
@@ -70,6 +73,10 @@ const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 
 
 function Index() {
   const { makeup, hair } = useContent();
+  const galleryDb = useGallery();
+  const galleryImgs = galleryDb.length > 0
+    ? galleryDb.map((g, i) => ({ src: g.img, h: i % 4 === 0 || i % 4 === 3 ? "row-span-2" : "" }))
+    : fallbackGallery;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
@@ -77,12 +84,14 @@ function Index() {
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
   const [bookOpen, setBookOpen] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [bookingDate, setBookingDate] = useState("");
   const [bookingTime, setBookingTime] = useState("");
   const [locationType, setLocationType] = useState<"studio" | "home">("studio");
   const [formError, setFormError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const allServices = [...makeup, ...hair];
   const total = allServices
@@ -100,35 +109,56 @@ function Index() {
     setBookOpen(true);
   };
 
-  const confirmBooking = () => {
+  const confirmBooking = async () => {
     if (selected.length === 0) return;
-    if (!phone.trim() || phone.trim().length < 8) {
-      setFormError("Please enter a valid phone number.");
-      return;
-    }
-    if (!bookingDate) {
-      setFormError("Please choose a preferred date.");
-      return;
-    }
-    if (!bookingTime) {
-      setFormError("Please choose an available time slot.");
-      return;
-    }
-    if (locationType === "home" && !address.trim()) {
-      setFormError("Please enter your address for the home visit.");
-      return;
-    }
+    if (!customerName.trim()) { setFormError("Please enter your name."); return; }
+    if (!phone.trim() || phone.trim().length < 8) { setFormError("Please enter a valid phone number."); return; }
+    if (!bookingDate) { setFormError("Please choose a preferred date."); return; }
+    if (!bookingTime) { setFormError("Please choose an available time slot."); return; }
+    if (locationType === "home" && !address.trim()) { setFormError("Please enter your address for the home visit."); return; }
     setFormError("");
-    const lines = allServices
+    setSubmitting(true);
+
+    const servicesPayload = allServices
       .filter((s) => selected.includes(s.name))
-      .map((s) => `• ${s.name} — AUD $${s.price}`)
-      .join("\n");
-    const locationLine =
-      locationType === "studio"
-        ? "Location: At your studio"
-        : `Location: Home service — ${address.trim()}`;
-    const msg = `G'day Glamupbykirthi, I'd like to book the following service${selected.length > 1 ? "s" : ""}:\n\n${lines}\n\nTotal: AUD $${total}\n\nPhone: ${phone.trim()}\nPreferred date: ${bookingDate}${bookingTime ? ` at ${bookingTime}` : ""}\n${locationLine}\n\nCould you please confirm availability? Cheers!`;
+      .map((s) => ({ name: s.name, price: s.price }));
+
+    const { data, error } = await supabase
+      .from("bookings")
+      .insert({
+        customer_name: customerName.trim(),
+        phone: phone.trim(),
+        services: servicesPayload,
+        total_amount: total,
+        booking_date: bookingDate,
+        booking_time: bookingTime,
+        location_type: locationType,
+        address: locationType === "home" ? address.trim() : "",
+      })
+      .select("id")
+      .single();
+
+    setSubmitting(false);
+
+    if (error || !data) {
+      setFormError("Could not submit booking. Please try again or contact us on WhatsApp.");
+      return;
+    }
+
+    rememberBooking(data.id);
+
+    const lines = servicesPayload.map((s) => `• ${s.name} — AUD $${s.price}`).join("\n");
+    const locationLine = locationType === "studio" ? "Location: At the studio" : `Location: Home — ${address.trim()}`;
+    const msg = `New booking request (ID: ${data.id.slice(0, 8)})\n\nName: ${customerName.trim()}\nPhone: ${phone.trim()}\n\nServices:\n${lines}\n\nTotal: AUD $${total}\nDate: ${bookingDate} at ${bookingTime}\n${locationLine}\n\nPlease confirm availability.`;
+
+    // Open WhatsApp to owner with prefilled details
     window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
+    // Open mailto to owner as backup notification channel
+    const mailto = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent("New booking request — Glamupbykirthi")}&body=${encodeURIComponent(msg)}`;
+    setTimeout(() => { window.open(mailto, "_self"); }, 400);
+
+    setBookOpen(false);
+    setSelected([]);
   };
 
   useEffect(() => {
@@ -509,6 +539,10 @@ function Index() {
         </svg>
       </a>
 
+      <MyBookingsStatus />
+
+
+
       {/* Booking Modal */}
       {bookOpen && (
         <div
@@ -554,6 +588,16 @@ function Index() {
               <div className="pt-2">
                 <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Your Details</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="md:col-span-2">
+                    <label className="block text-xs font-bold text-black mb-1.5">Your Name *</label>
+                    <input
+                      type="text"
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      placeholder="Full name"
+                      className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-black placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-rose-gold"
+                    />
+                  </div>
                   <div className="md:col-span-2">
                     <label className="block text-xs font-bold text-black mb-1.5">Phone Number *</label>
                     <input
@@ -652,12 +696,12 @@ function Index() {
               )}
               <button
                 onClick={confirmBooking}
-                disabled={selected.length === 0}
+                disabled={selected.length === 0 || submitting}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full gradient-rose text-black px-6 py-3.5 text-sm font-bold shadow-soft hover:scale-[1.01] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Sparkles className="h-4 w-4" /> Confirm Booking
+                {submitting ? <><Loader2 className="h-4 w-4 animate-spin" /> Submitting…</> : <><Sparkles className="h-4 w-4" /> Request Booking</>}
               </button>
-              <p className="text-[11px] text-center text-muted-foreground mt-3">You'll be redirected to WhatsApp to finalise your booking with our team.</p>
+              <p className="text-[11px] text-center text-muted-foreground mt-3">We'll send the request to the owner via WhatsApp & email. You'll see live confirmation status below once submitted.</p>
             </div>
           </div>
         </div>
@@ -697,4 +741,85 @@ function BookingRow({ s, checked, onToggle }: { s: { name: string; price: number
       <span className="font-bold text-sm text-black shrink-0">AUD ${s.price}</span>
     </label>
   );
+}
+
+type BookingStatusRow = {
+  id: string;
+  status: "pending" | "confirmed" | "declined";
+  customer_name: string;
+  booking_date: string;
+  booking_time: string;
+  total_amount: number;
+  admin_note: string;
+};
+
+function MyBookingsStatus() {
+  const [items, setItems] = useState<BookingStatusRow[]>([]);
+  const [dismissed, setDismissed] = useState(false);
+
+  const load = async () => {
+    const ids = listLocalBookings().map((b) => b.id);
+    if (ids.length === 0) { setItems([]); return; }
+    const { data } = await supabase
+      .from("bookings")
+      .select("id,status,customer_name,booking_date,booking_time,total_amount,admin_note")
+      .in("id", ids)
+      .order("created_at", { ascending: false });
+    setItems((data ?? []) as BookingStatusRow[]);
+  };
+
+  useEffect(() => {
+    load();
+    const ch = supabase
+      .channel("my-bookings-status")
+      .on("postgres_changes", { event: "UPDATE", schema: "public", table: "bookings" }, () => load())
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "bookings" }, () => load())
+      .subscribe();
+    const onStorage = () => load();
+    window.addEventListener("storage", onStorage);
+    const t = setInterval(load, 8000);
+    return () => { supabase.removeChannel(ch); window.removeEventListener("storage", onStorage); clearInterval(t); };
+  }, []);
+
+  if (dismissed || items.length === 0) return null;
+
+  return (
+    <div className="fixed bottom-24 right-6 z-40 w-[min(360px,calc(100vw-3rem))] glass rounded-2xl shadow-luxe border border-border overflow-hidden animate-fade-up">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-secondary/60">
+        <p className="text-xs uppercase tracking-widest font-bold text-black">Your Bookings</p>
+        <button onClick={() => setDismissed(true)} aria-label="Hide" className="p-1 rounded-full hover:bg-background/60">
+          <X className="h-4 w-4 text-black" />
+        </button>
+      </div>
+      <ul className="max-h-[300px] overflow-y-auto divide-y divide-border">
+        {items.map((b) => (
+          <li key={b.id} className="px-4 py-3 text-sm">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <p className="font-bold text-black truncate">{b.customer_name || "Booking"}</p>
+                <p className="text-xs text-muted-foreground mt-0.5">{b.booking_date} · {b.booking_time}</p>
+                <p className="text-xs text-muted-foreground">AUD ${b.total_amount}</p>
+              </div>
+              <StatusPill status={b.status} />
+            </div>
+            {b.status === "pending" && (
+              <p className="mt-2 text-[11px] text-muted-foreground italic">Waiting for owner to confirm availability…</p>
+            )}
+            {b.status === "confirmed" && (
+              <p className="mt-2 text-[11px] text-green-700 font-bold">Confirmed! See you soon.{b.admin_note ? ` — ${b.admin_note}` : ""}</p>
+            )}
+            {b.status === "declined" && (
+              <p className="mt-2 text-[11px] text-red-600 font-bold">Sorry, this slot isn't available.{b.admin_note ? ` ${b.admin_note}` : ""}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function StatusPill({ status }: { status: "pending" | "confirmed" | "declined" }) {
+  if (status === "confirmed") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-green-700 bg-green-100 px-2 py-1 rounded-full"><CheckCircle2 className="h-3 w-3" /> Confirmed</span>;
+  if (status === "declined") return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-red-600 bg-red-100 px-2 py-1 rounded-full"><XCircle className="h-3 w-3" /> Declined</span>;
+  return <span className="inline-flex items-center gap-1 text-[10px] uppercase tracking-wider font-bold text-amber-700 bg-amber-100 px-2 py-1 rounded-full"><Loader2 className="h-3 w-3 animate-spin" /> Pending</span>;
 }
