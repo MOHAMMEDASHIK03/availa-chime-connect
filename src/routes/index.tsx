@@ -3,10 +3,12 @@ import { useEffect, useState } from "react";
 import {
   Menu, X, Sparkles, Crown, Heart, Star, MapPin, Clock, Phone,
   Instagram, Facebook, Mail, ChevronDown, ChevronLeft, ChevronRight,
-  ShieldCheck, Brush, Gem, Palette
+  ShieldCheck, Brush, Gem, Palette, CheckCircle2, XCircle, Loader2
 } from "lucide-react";
 import brushesBg from "@/assets/brushes-bg.jpg";
-import { useContent } from "@/lib/content-store";
+import { useContent, useGallery } from "@/lib/content-store";
+import { supabase } from "@/integrations/supabase/client";
+import { rememberBooking, listLocalBookings } from "@/lib/local-bookings";
 import bridal from "@/assets/bridal.jpg";
 import softglam from "@/assets/softglam.jpg";
 import bridalhair from "@/assets/bridalhair.jpg";
@@ -22,12 +24,13 @@ import gallery2 from "@/assets/gallery2.jpg";
 export const Route = createFileRoute("/")({ component: Index });
 
 const WA = "61481308396";
+const OWNER_EMAIL = "Kiruthikak402@gmail.com";
 const waLink = (svc?: string) =>
   `https://wa.me/${WA}?text=${encodeURIComponent(
     svc ? `Hello Glamupbykirthi, I would like to book ${svc} service.` : "Hello Glamupbykirthi, I'd like to enquire about your services."
   )}`;
 
-const galleryImgs = [
+const fallbackGallery = [
   { src: bridal, h: "row-span-2" },
   { src: gallery1, h: "" },
   { src: softglam, h: "" },
