@@ -692,12 +692,12 @@ function Index() {
               )}
               <button
                 onClick={confirmBooking}
-                disabled={selected.length === 0}
+                disabled={selected.length === 0 || submitting}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full gradient-rose text-black px-6 py-3.5 text-sm font-bold shadow-soft hover:scale-[1.01] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Sparkles className="h-4 w-4" /> Confirm Booking
+                {submitting ? <><Loader2 className="h-4 w-4 animate-spin" /> Submitting…</> : <><Sparkles className="h-4 w-4" /> Request Booking</>}
               </button>
-              <p className="text-[11px] text-center text-muted-foreground mt-3">You'll be redirected to WhatsApp to finalise your booking with our team.</p>
+              <p className="text-[11px] text-center text-muted-foreground mt-3">We'll send the request to the owner via WhatsApp & email. You'll see live confirmation status below once submitted.</p>
             </div>
           </div>
         </div>
