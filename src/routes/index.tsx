@@ -73,6 +73,10 @@ const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 
 
 function Index() {
   const { makeup, hair } = useContent();
+  const galleryDb = useGallery();
+  const galleryImgs = galleryDb.length > 0
+    ? galleryDb.map((g, i) => ({ src: g.img, h: i % 4 === 0 || i % 4 === 3 ? "row-span-2" : "" }))
+    : fallbackGallery;
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
@@ -80,12 +84,14 @@ function Index() {
   const [faqOpen, setFaqOpen] = useState<number | null>(0);
   const [bookOpen, setBookOpen] = useState(false);
   const [selected, setSelected] = useState<string[]>([]);
+  const [customerName, setCustomerName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [bookingDate, setBookingDate] = useState("");
   const [bookingTime, setBookingTime] = useState("");
   const [locationType, setLocationType] = useState<"studio" | "home">("studio");
   const [formError, setFormError] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   const allServices = [...makeup, ...hair];
   const total = allServices
