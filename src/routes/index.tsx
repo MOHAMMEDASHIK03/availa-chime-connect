@@ -585,6 +585,16 @@ function Index() {
                 <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Your Details</p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <div className="md:col-span-2">
+                    <label className="block text-xs font-bold text-black mb-1.5">Your Name *</label>
+                    <input
+                      type="text"
+                      value={customerName}
+                      onChange={(e) => setCustomerName(e.target.value)}
+                      placeholder="Full name"
+                      className="w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-black placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-rose-gold"
+                    />
+                  </div>
+                  <div className="md:col-span-2">
                     <label className="block text-xs font-bold text-black mb-1.5">Phone Number *</label>
                     <input
                       type="tel"
