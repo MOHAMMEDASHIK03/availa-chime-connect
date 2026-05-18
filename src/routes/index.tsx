@@ -539,6 +539,10 @@ function Index() {
         </svg>
       </a>
 
+      <MyBookingsStatus />
+
+
+
       {/* Booking Modal */}
       {bookOpen && (
         <div
