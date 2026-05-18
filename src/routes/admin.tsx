@@ -158,7 +158,7 @@ function BookingsPanel() {
 
   const load = async () => {
     const { data } = await supabase.from("bookings").select("*").order("created_at", { ascending: false });
-    setBookings((data ?? []) as Booking[]);
+    setBookings(((data ?? []) as unknown) as Booking[]);
   };
 
   useEffect(() => {
