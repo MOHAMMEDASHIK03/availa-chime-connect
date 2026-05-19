@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Menu, X, Sparkles, Crown, Heart, Star, MapPin, Clock, Phone,
-  Instagram, Facebook, Mail, ChevronDown, ChevronLeft, ChevronRight,
+  Instagram, Mail, ChevronDown, ChevronLeft, ChevronRight,
   ShieldCheck, Brush, Gem, Palette, CheckCircle2, XCircle, Loader2
 } from "lucide-react";
 import brushesBg from "@/assets/brushes-bg.jpg";
@@ -457,8 +457,11 @@ function Index() {
                   <Sparkles className="h-4 w-4" /> Chat on WhatsApp
                 </a>
                 <div className="flex items-center gap-2">
-                  {[Instagram, Facebook, Mail].map((Icon, i) => (
-                    <a key={i} href="#" aria-label="social" className="h-11 w-11 rounded-full border border-border grid place-items-center hover:bg-rose-gold hover:text-white hover:border-rose-gold transition">
+                  {[
+                    { Icon: Instagram, href: "https://www.instagram.com/glamup_by_kirthi?igsh=M3Q2bzdxZnFtMGF3", label: "Instagram", external: true },
+                    { Icon: Mail, href: `mailto:${OWNER_EMAIL}`, label: "Email", external: false },
+                  ].map(({ Icon, href, label, external }, i) => (
+                    <a key={i} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} aria-label={label} className="h-11 w-11 rounded-full border border-border grid place-items-center hover:bg-rose-gold hover:text-white hover:border-rose-gold transition">
                       <Icon className="h-4 w-4" />
                     </a>
                   ))}
@@ -486,8 +489,11 @@ function Index() {
             <p className="font-display font-bold text-2xl text-black">Glamupbykirthi</p>
             <p className="mt-5 text-sm text-black max-w-sm leading-relaxed">Luxury makeup and hairstyling studio crafting bespoke beauty experiences from the heart of Melbourne.</p>
             <div className="mt-6 flex gap-3">
-              {[Instagram, Facebook, Mail].map((Icon, i) => (
-                <a key={i} href="#" aria-label="social" className="h-10 w-10 rounded-full border border-black/20 grid place-items-center hover:bg-rose-gold transition">
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/glamup_by_kirthi?igsh=M3Q2bzdxZnFtMGF3", label: "Instagram", external: true },
+                { Icon: Mail, href: `mailto:${OWNER_EMAIL}`, label: "Email", external: false },
+              ].map(({ Icon, href, label, external }, i) => (
+                <a key={i} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} aria-label={label} className="h-10 w-10 rounded-full border border-black/20 grid place-items-center hover:bg-rose-gold transition">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
