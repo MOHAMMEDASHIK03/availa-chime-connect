@@ -46,7 +46,7 @@ const fallbackGallery = [
 
 const features = [
   { icon: ShieldCheck, title: "Certified Makeup Artist", desc: "Australian-trained, fully accredited and insured for your peace of mind." },
-  { icon: Gem, title: "Luxury Products Only", desc: "Charlotte Tilbury, Dior, Hourglass and Pat McGrath — nothing but the best on your skin." },
+  { icon: Gem, title: "Luxury Products Only", desc: "Charlotte Tilbury, Dior, Hourglass and NARS — nothing but the best on your skin." },
   { icon: Crown, title: "Bridal Specialists", desc: "Hundreds of brides styled across Melbourne and the greater Melbourne region." },
   { icon: Brush, title: "Modern Styling", desc: "Trend-led techniques refined for Australian skin tones, climate and lighting." },
   { icon: Heart, title: "Personalised Experience", desc: "Every appointment begins with a tailored consultation — no two looks are alike." },
