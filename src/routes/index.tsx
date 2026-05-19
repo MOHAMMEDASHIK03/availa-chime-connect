@@ -489,8 +489,11 @@ function Index() {
             <p className="font-display font-bold text-2xl text-black">Glamupbykirthi</p>
             <p className="mt-5 text-sm text-black max-w-sm leading-relaxed">Luxury makeup and hairstyling studio crafting bespoke beauty experiences from the heart of Melbourne.</p>
             <div className="mt-6 flex gap-3">
-              {[Instagram, Facebook, Mail].map((Icon, i) => (
-                <a key={i} href="#" aria-label="social" className="h-10 w-10 rounded-full border border-black/20 grid place-items-center hover:bg-rose-gold transition">
+              {[
+                { Icon: Instagram, href: "https://www.instagram.com/glamup_by_kirthi?igsh=M3Q2bzdxZnFtMGF3", label: "Instagram", external: true },
+                { Icon: Mail, href: `mailto:${OWNER_EMAIL}`, label: "Email", external: false },
+              ].map(({ Icon, href, label, external }, i) => (
+                <a key={i} href={href} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})} aria-label={label} className="h-10 w-10 rounded-full border border-black/20 grid place-items-center hover:bg-rose-gold transition">
                   <Icon className="h-4 w-4" />
                 </a>
               ))}
