@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   Menu, X, Sparkles, Crown, Heart, Star, MapPin, Clock, Phone,
-  Instagram, Facebook, Mail, ChevronDown, ChevronLeft, ChevronRight,
+  Instagram, Mail, ChevronDown, ChevronLeft, ChevronRight,
   ShieldCheck, Brush, Gem, Palette, CheckCircle2, XCircle, Loader2
 } from "lucide-react";
 import brushesBg from "@/assets/brushes-bg.jpg";
