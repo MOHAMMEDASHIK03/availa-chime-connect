@@ -341,8 +341,7 @@ function Index() {
       <section id="why" className="py-24 md:py-32 gradient-soft relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 md:px-8 relative">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Why Choose Us</p>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl text-black">The Glamupbykirthi <span className="italic font-script text-gradient-rose">difference</span></h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-rose-gold">Why Choose Us</h2>
           </div>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {features.map((f) => (
