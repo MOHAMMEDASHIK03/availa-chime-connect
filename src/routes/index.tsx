@@ -46,7 +46,7 @@ const fallbackGallery = [
 
 const features = [
   { icon: ShieldCheck, title: "Certified Makeup Artist", desc: "Australian-trained, fully accredited and insured for your peace of mind." },
-  { icon: Gem, title: "Luxury Products Only", desc: "Charlotte Tilbury, Dior, Hourglass and Pat McGrath — nothing but the best on your skin." },
+  { icon: Gem, title: "Luxury Products Only", desc: "Charlotte Tilbury, Dior, Hourglass and NARS — nothing but the best on your skin." },
   { icon: Crown, title: "Bridal Specialists", desc: "Hundreds of brides styled across Melbourne and the greater Melbourne region." },
   { icon: Brush, title: "Modern Styling", desc: "Trend-led techniques refined for Australian skin tones, climate and lighting." },
   { icon: Heart, title: "Personalised Experience", desc: "Every appointment begins with a tailored consultation — no two looks are alike." },
@@ -230,7 +230,7 @@ function Index() {
           <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs tracking-[0.3em] uppercase text-foreground/70 animate-fade-up">
             <Sparkles className="h-3.5 w-3.5 text-rose-gold" /> Melbourne · Est. Luxury
           </div>
-          <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-up delay-200">
+          <p className="mt-4 max-w-xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-up delay-200">
             Glamupbykirthi is a luxury makeup and hairstyling studio in the heart of Docklands —
             where bespoke artistry, premium products and personalised care come together for your most beautiful moments.
           </p>
@@ -341,8 +341,7 @@ function Index() {
       <section id="why" className="py-24 md:py-32 gradient-soft relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-5 md:px-8 relative">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Why Choose Us</p>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl text-black">The Glamupbykirthi <span className="italic font-script text-gradient-rose">difference</span></h2>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-rose-gold">Why Choose Us</h2>
           </div>
           <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {features.map((f) => (
@@ -695,7 +694,7 @@ function Index() {
                 disabled={selected.length === 0 || submitting}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full gradient-rose text-black px-6 py-3.5 text-sm font-bold shadow-soft hover:scale-[1.01] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                {submitting ? <><Loader2 className="h-4 w-4 animate-spin" /> Submitting…</> : <><Sparkles className="h-4 w-4" /> Request Booking</>}
+                {submitting ? <><Loader2 className="h-4 w-4 animate-spin" /> Submitting…</> : <><Sparkles className="h-4 w-4" /> Submit</>}
               </button>
               <p className="text-[11px] text-center text-muted-foreground mt-3">We'll send the request to the owner via WhatsApp & email. You'll see live confirmation status below once submitted.</p>
             </div>
