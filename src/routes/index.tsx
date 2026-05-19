@@ -230,7 +230,7 @@ function Index() {
           <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs tracking-[0.3em] uppercase text-foreground/70 animate-fade-up">
             <Sparkles className="h-3.5 w-3.5 text-rose-gold" /> Melbourne · Est. Luxury
           </div>
-          <p className="mt-8 max-w-xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-up delay-200">
+          <p className="mt-4 max-w-xl mx-auto text-base md:text-lg text-muted-foreground leading-relaxed animate-fade-up delay-200">
             Glamupbykirthi is a luxury makeup and hairstyling studio in the heart of Docklands —
             where bespoke artistry, premium products and personalised care come together for your most beautiful moments.
           </p>
