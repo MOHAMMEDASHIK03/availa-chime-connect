@@ -98,14 +98,14 @@
 @layer utilities {
   .font-display { font-family: var(--font-display); }
   .font-script { font-family: var(--font-script); }
-  .text-rose-gold { color: oklch(0.55 0.1 5); }
+  .text-rose-gold { color: oklch(0.7 0.12 350); }
   .bg-rose-gold { background-color: var(--rose-gold); }
   .bg-sky { background-color: var(--sky); }
-  .text-sky { color: oklch(0.5 0.1 230); }
+  .text-sky { color: oklch(0.7 0.12 350); }
   .gradient-rose { background-image: var(--gradient-rose); }
   .gradient-soft { background-image: var(--gradient-soft); }
   .text-gradient-rose {
-    background: linear-gradient(120deg, oklch(0.6 0.12 5), oklch(0.55 0.12 230));
+    background: linear-gradient(120deg, oklch(0.7 0.13 350), oklch(0.78 0.1 350));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
