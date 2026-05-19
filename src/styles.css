@@ -45,39 +45,39 @@
 
 :root {
   --radius: 0.875rem;
-  /* Light rose + sky blue + white, all text black */
-  --background: oklch(0.99 0.005 350);            /* soft white */
-  --foreground: oklch(0.28 0.01 270);             /* refined charcoal */
+  /* Baby pink theme */
+  --background: oklch(0.985 0.012 350);           /* soft baby pink white */
+  --foreground: oklch(0.28 0.01 350);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.28 0.01 270);
+  --card-foreground: oklch(0.28 0.01 350);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.28 0.01 270);
-  --primary: oklch(0.82 0.07 5);                  /* light rose */
-  --primary-foreground: oklch(0 0 0);
-  --secondary: oklch(0.93 0.04 230);              /* sky blue */
-  --secondary-foreground: oklch(0 0 0);
-  --muted: oklch(0.96 0.012 350);
-  --muted-foreground: oklch(0.45 0.01 270);
-  --accent: oklch(0.9 0.05 230);                  /* sky blue accent */
-  --accent-foreground: oklch(0 0 0);
+  --popover-foreground: oklch(0.28 0.01 350);
+  --primary: oklch(0.88 0.06 350);                /* baby pink */
+  --primary-foreground: oklch(0.2 0.02 350);
+  --secondary: oklch(0.94 0.04 350);              /* lighter baby pink */
+  --secondary-foreground: oklch(0.2 0.02 350);
+  --muted: oklch(0.96 0.02 350);
+  --muted-foreground: oklch(0.45 0.02 350);
+  --accent: oklch(0.92 0.05 350);                 /* pink accent */
+  --accent-foreground: oklch(0.2 0.02 350);
   --destructive: oklch(0.577 0.18 27);
   --destructive-foreground: oklch(0.99 0 0);
-  --border: oklch(0.88 0.02 350);
-  --input: oklch(0.92 0.015 350);
-  --ring: oklch(0.82 0.07 5);
+  --border: oklch(0.9 0.03 350);
+  --input: oklch(0.94 0.025 350);
+  --ring: oklch(0.85 0.07 350);
 
-  --rose-gold: oklch(0.78 0.08 5);                /* light rose */
-  --rose-gold-light: oklch(0.92 0.04 5);
-  --nude: oklch(0.94 0.025 350);
-  --blush: oklch(0.93 0.04 10);
-  --sky: oklch(0.78 0.09 230);                    /* sky blue */
-  --sky-light: oklch(0.92 0.05 230);
+  --rose-gold: oklch(0.82 0.08 350);              /* baby pink */
+  --rose-gold-light: oklch(0.93 0.04 350);
+  --nude: oklch(0.95 0.025 350);
+  --blush: oklch(0.92 0.05 350);
+  --sky: oklch(0.88 0.06 350);                    /* mapped to pink */
+  --sky-light: oklch(0.94 0.035 350);
   --ink: oklch(0 0 0);
 
-  --gradient-rose: linear-gradient(135deg, oklch(0.9 0.05 10) 0%, oklch(0.85 0.07 5) 50%, oklch(0.88 0.06 230) 100%);
-  --gradient-soft: linear-gradient(180deg, oklch(0.99 0.005 350) 0%, oklch(0.93 0.04 230) 100%);
-  --shadow-luxe: 0 30px 80px -30px oklch(0.6 0.08 230 / 0.25);
-  --shadow-soft: 0 10px 40px -15px oklch(0.6 0.08 230 / 0.15);
+  --gradient-rose: linear-gradient(135deg, oklch(0.94 0.04 350) 0%, oklch(0.86 0.07 350) 50%, oklch(0.9 0.05 350) 100%);
+  --gradient-soft: linear-gradient(180deg, oklch(0.99 0.008 350) 0%, oklch(0.94 0.04 350) 100%);
+  --shadow-luxe: 0 30px 80px -30px oklch(0.7 0.08 350 / 0.3);
+  --shadow-soft: 0 10px 40px -15px oklch(0.7 0.08 350 / 0.2);
 }
 
 @layer base {
