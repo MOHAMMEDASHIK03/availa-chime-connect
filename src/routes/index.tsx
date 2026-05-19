@@ -396,7 +396,7 @@ function Index() {
         <div className="max-w-3xl mx-auto px-5 md:px-8">
           <div className="text-center">
             <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Good to Know</p>
-            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Frequently <span className="italic font-script text-gradient-rose">asked</span></h2>
+            <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Policies &amp; <span className="italic font-script text-gradient-rose">terms</span></h2>
           </div>
           <div className="mt-12 space-y-3">
             {faqs.map((f, i) => {
