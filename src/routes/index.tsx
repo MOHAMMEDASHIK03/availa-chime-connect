@@ -506,7 +506,7 @@ function Index() {
             <ul className="space-y-3 text-sm text-black">
               <li>628 Flinders Street, Docklands VIC 3008</li>
               <li><a href={waLink()} target="_blank" rel="noopener noreferrer" className="hover:underline">+61 481 308 396</a></li>
-              <li>Mon – Sat · 9:00 am – 7:00 pm</li>
+              <li>Mon – Sun · 9:00 am – 6:00 pm</li>
             </ul>
           </div>
         </div>
