@@ -268,14 +268,8 @@ function Index() {
           <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
           <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed text-left sm:text-center">
             <p>Glamupbykirthi was born from a love of artistry and the belief that every woman deserves to feel like the most luminous version of herself. From our intimate Docklands studio, we craft bespoke makeup and hair experiences that feel personal, refined and quietly indulgent.</p>
-            <p>Founded by certified makeup artist Kirthi, our atelier has styled over 500 brides and editorial faces across Melbourne — championing skin-first artistry, luxury products and an unhurried, considered approach to beauty.</p>
-            <p>Whether you're saying "I do" in Melbourne or preparing for a milestone celebration, our studio is your private retreat — pour yourself a glass of bubbles and let us look after the rest.</p>
-          </div>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <span className="rounded-full bg-secondary px-4 py-2 text-xs tracking-wide">Skin-first Artistry</span>
-            <span className="rounded-full bg-secondary px-4 py-2 text-xs tracking-wide">Bridal Specialists</span>
-            <span className="rounded-full bg-secondary px-4 py-2 text-xs tracking-wide">Editorial Trained</span>
-            <span className="rounded-full bg-secondary px-4 py-2 text-xs tracking-wide">Luxury Brands Only</span>
+            <p>Founded by our certified Team, our atelier has styled over 500 brides and editorial faces across Melbourne — championing skin-first artistry, luxury products and an unhurried, considered approach to beauty.</p>
+            <p>I am specialised in HD makeup and Softglam makeup.</p>
           </div>
         </div>
       </section>
