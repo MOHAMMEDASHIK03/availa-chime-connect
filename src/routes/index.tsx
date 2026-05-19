@@ -54,19 +54,15 @@ const features = [
 ];
 
 const testimonials = [
-  { name: "Charlotte W.", role: "Bride, Melbourne", text: "Absolutely brilliant. My bridal makeup lasted from sunrise ceremony right through to the after-party. Kirthi is a true artist — I felt like the most beautiful version of myself." },
+  { name: "Charlotte W.", role: "Bride, Melbourne", text: "Absolutely brilliant. My bridal makeup lasted from sunrise ceremony right through to the after-party. The Team is truly artistic — I felt like the most beautiful version of myself." },
   { name: "Amelia R.", role: "Melbourne", text: "The HD makeup is unreal. Looked flawless in every photo and the soft glam was exactly the vibe I was going for. Such a calm, luxurious experience in the studio." },
   { name: "Priya S.", role: "Docklands", text: "From the consultation to the final touch-up, everything was effortless and refined. The bridal hair updo was breathtaking — I keep getting compliments months later." },
-  { name: "Olivia M.", role: "South Yarra", text: "Genuinely the best makeup artist in Melbourne. Kirthi has a magical touch and uses only the most luxurious products. Booking again for my engagement shoot." },
+  { name: "Olivia M.", role: "South Yarra", text: "Genuinely the best makeup artist in Melbourne. The Team has a magical touch and uses only the most luxurious products. Booking again for my engagement shoot." },
 ];
 
 const faqs = [
-  { q: "Where is the studio located?", a: "We're based at 628 Flinders Street, Docklands, Victoria 3008 — a short stroll from Southern Cross Station in the heart of Melbourne." },
-  { q: "Do you offer on-location bridal services?", a: "Yes — we service Melbourne and the greater Melbourne region only for weddings and editorial bookings. Travel within Melbourne is quoted on enquiry." },
-  { q: "How far in advance should I book my wedding?", a: "We recommend booking your bridal trial and wedding day 6–12 months in advance, particularly for peak season (October to April)." },
-  { q: "What brands of products do you use?", a: "We work exclusively with luxury brands including Charlotte Tilbury, Dior, Hourglass, Pat McGrath, NARS, Chanel and Westman Atelier." },
-  { q: "Do you cater to all skin tones and types?", a: "Yes — Kirthi is trained in artistry for every skin tone, texture and age. Custom shade matching is included in every appointment." },
-  { q: "What's your cancellation policy?", a: "A small deposit secures your booking. Reschedules are welcome with 48 hours' notice. Full T&Cs are shared at booking confirmation." },
+  { q: "Booking policy", a: "A small deposit secures your booking. Reschedules are welcome with 48 hours' notice. Bookings are confirmed once availability is approved by our team via WhatsApp or email." },
+  { q: "Terms and conditions", a: "Deposits are non-refundable but transferable to a rescheduled date with 48 hours' notice. Late arrivals may shorten the appointment time. Full terms are shared at booking confirmation." },
 ];
 
 const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 6:00 pm"];
