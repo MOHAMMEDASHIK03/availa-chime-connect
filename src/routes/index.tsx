@@ -442,7 +442,7 @@ function Index() {
                 <div className="h-11 w-11 rounded-2xl gradient-rose grid place-items-center text-black shrink-0"><Clock className="h-5 w-5" /></div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">Opening Hours</p>
-                  <p className="font-display text-lg mt-1">Mon – Sun · 9:00 am – 6:00 pm</p>
+                  <p className="font-display text-base sm:text-lg mt-1 whitespace-nowrap">Mon – Sun · 9:00 am – 6:00 pm</p>
                 </div>
               </div>
               <div className="flex gap-4">
