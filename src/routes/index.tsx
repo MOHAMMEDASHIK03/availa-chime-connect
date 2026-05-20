@@ -62,7 +62,9 @@ const testimonials = [
 
 const faqs = [
   { q: "Booking policy", a: "A small deposit secures your booking. Reschedules are welcome with 48 hours' notice. Bookings are confirmed once availability is approved by our team via WhatsApp or email." },
-  { q: "Terms and conditions", a: "Deposits are non-refundable but transferable to a rescheduled date with 48 hours' notice. Late arrivals may shorten the appointment time. Full terms are shared at booking confirmation." },
+  { q: "Deposit", a: "All bookings require a non-refundable deposit (booking fee) of $50-$150 to secure your event. No deposit means that your event date is not confirmed. Dates cannot be held and remain open until a deposit is made. The booking fee will come off the total amount due." },
+  { q: "Booking fees", a: "All booking fees are non-refundable and non-transferable, whether partial or full. The balance for mobile bookings can be paid prior via bank transfer or the day of services, providing FUNDS CLEAR prior to commencement of services.\n\nIf you choose to pay in full in advance and then cancel, your payment is non-refundable.\n\nA booking fee is not an extra cost. It is deducted from the total cost. Booking fees are there to cover for example, you just decide to cancel, during which that time we hold your booking we refuse other work. So if you cancel there is a potential loss in income. Any further questions please inform us during your enquiry." },
+  { q: "Cancellations", a: "Studio bookings which are cancelled after a deposit has been made will result in the loss of your deposit.\n\nIf your wedding is cancelled within 12 weeks of date, full payment is required. Changing your wedding date to a time I cannot accommodate will result in the loss of your booking fee.\n\nBooking fees are non-refundable and non-transferable, and the number of applications cannot be reduced after the deposit is paid." },
 ];
 
 const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 6:00 pm"];
@@ -263,7 +265,7 @@ function Index() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="py-24 md:py-32 relative">
+      <section id="about" className="pt-10 pb-16 md:pt-12 md:pb-20 relative">
         <div className="max-w-3xl mx-auto px-5 md:px-8 text-center">
           <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
           <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed text-left sm:text-center">
@@ -275,7 +277,7 @@ function Index() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-24 md:py-32 gradient-soft">
+      <section id="services" className="pt-12 pb-24 md:pt-16 md:pb-32 gradient-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
             <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
@@ -408,7 +410,7 @@ function Index() {
                   </button>
                   <div className={`grid transition-all duration-500 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-muted-foreground leading-relaxed">{f.a}</p>
+                      <p className="px-6 pb-6 text-muted-foreground leading-relaxed whitespace-pre-line">{f.a}</p>
                     </div>
                   </div>
                 </div>
