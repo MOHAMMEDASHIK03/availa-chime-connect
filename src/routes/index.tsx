@@ -61,10 +61,10 @@ const testimonials = [
 ];
 
 const faqs = [
-  
-  { q: "Deposit", a: "All bookings require a non-refundable deposit (booking fee) of $50-$150 to secure your event. No deposit means that your event date is not confirmed. Dates cannot be held and remain open until a deposit is made. The booking fee will come off the total amount due." },
-  { q: "Booking fees", a: "All booking fees are non-refundable and non-transferable, whether partial or full. The balance for mobile bookings can be paid prior via bank transfer or the day of services, providing FUNDS CLEAR prior to commencement of services.\n\nIf you choose to pay in full in advance and then cancel, your payment is non-refundable.\n\nA booking fee is not an extra cost. It is deducted from the total cost. Booking fees are there to cover for example, you just decide to cancel, during which that time we hold your booking we refuse other work. So if you cancel there is a potential loss in income. Any further questions please inform us during your enquiry." },
-  { q: "Cancellations", a: "Studio bookings which are cancelled after a deposit has been made will result in the loss of your deposit.\n\nIf your wedding is cancelled within 12 weeks of date, full payment is required. Changing your wedding date to a time I cannot accommodate will result in the loss of your booking fee.\n\nBooking fees are non-refundable and non-transferable, and the number of applications cannot be reduced after the deposit is paid." },
+  { q: "Booking & Retainer", a: "Securing Your Date: All bookings are secured only upon payment of a non-refundable booking fee.\n\nFirst-Come Basis: Dates are held on a strict first-come, first-served basis. Verbal agreements or email inquiries do not secure a date until the retainer is processed." },
+  { q: "Cancellation & Rescheduling", a: "Because your time slot is reserved exclusively for you, our cancellation policy is as follows:\n\nGeneral Cancellations: The booking fee is strictly non-refundable and non-transferable.\n\nWithin 14–30 days of event: 50% of the total quoted amount is due.\n\nWithin 14 days of event: 100% of the total quoted amount is due." },
+  { q: "Travel & Logistics", a: "Travel Fees: Travel fees apply for locations outside the immediate Melbourne CBD. This will be calculated and provided in your personalized quote." },
+  { q: "Consent & Media", a: "Photography: We love showcasing our work! Unless you opt-out in writing, images taken during your session may be used for marketing purposes on our website or social media channels." },
 ];
 
 const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 6:00 pm"];
@@ -267,7 +267,7 @@ function Index() {
       {/* ABOUT */}
       <section id="about" className="pt-10 pb-16 md:pt-12 md:pb-20 relative">
         <div className="max-w-3xl mx-auto px-5 md:px-8 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
+          <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
           <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed text-left sm:text-center">
             <p>Glamupbykirthi was born from a love of artistry and the belief that every woman deserves to feel like the most luminous version of herself. From our intimate Docklands studio, we craft bespoke makeup and hair experiences that feel personal, refined and quietly indulgent.</p>
             <p>Founded by our certified Team, our atelier has styled over 500 brides and editorial faces across Melbourne — championing skin-first artistry, luxury products and an unhurried, considered approach to beauty.</p>
@@ -280,7 +280,7 @@ function Index() {
       <section id="services" className="pt-12 pb-24 md:pt-16 md:pb-32 gradient-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Signature Services</h2>
             <p className="mt-5 text-muted-foreground">A curated selection of makeup and hairstyling experiences, thoughtfully priced in AUD and tailored to every occasion.</p>
           </div>
@@ -313,7 +313,7 @@ function Index() {
       <section id="gallery" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Portfolio</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Portfolio</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Moments of <span className="italic font-script text-gradient-rose">Glamour</span></h2>
             <p className="mt-5 text-muted-foreground">A glimpse inside our studio — bridal beauty, soft glam and modern hairstyling from across Melbourne.</p>
           </div>
@@ -361,7 +361,7 @@ function Index() {
       <section id="reviews" className="py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Kind Words</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Kind Words</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Loved by our <span className="italic font-script text-gradient-rose">clients</span></h2>
           </div>
 
@@ -396,7 +396,7 @@ function Index() {
       <section id="faq" className="py-24 md:py-32 gradient-soft">
         <div className="max-w-3xl mx-auto px-5 md:px-8">
           <div className="text-center">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Good to Know</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Good to Know</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Policies &amp; <span className="italic font-script text-gradient-rose">terms</span></h2>
           </div>
           <div className="mt-12 space-y-3">
@@ -424,7 +424,7 @@ function Index() {
       <section id="contact" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Get in touch</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Get in touch</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Visit our <span className="italic font-script text-gradient-rose">studio</span></h2>
             <p className="mt-5 text-muted-foreground">Pop into our Docklands atelier or send us a message on WhatsApp — we'd love to hear from you.</p>
           </div>
