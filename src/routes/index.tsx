@@ -277,7 +277,7 @@ function Index() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="py-24 md:py-32 gradient-soft">
+      <section id="services" className="pt-12 pb-24 md:pt-16 md:pb-32 gradient-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
             <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
