@@ -220,7 +220,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+      <section id="home" className="relative flex items-center pt-24 pb-8 md:min-h-screen md:pt-28 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img src={brushesBg} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.18] mix-blend-multiply" />
           <div className="absolute inset-0 gradient-soft" />
@@ -245,7 +245,7 @@ function Index() {
             </button>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-8 animate-fade-up delay-500">
+          <div className="mt-8 md:mt-12 flex items-center justify-center gap-8 animate-fade-up delay-500">
             <div>
               <p className="font-display text-3xl text-rose-gold">500+</p>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">Brides Styled</p>
@@ -442,7 +442,7 @@ function Index() {
                 <div className="h-11 w-11 rounded-2xl gradient-rose grid place-items-center text-black shrink-0"><Clock className="h-5 w-5" /></div>
                 <div>
                   <p className="text-xs uppercase tracking-widest text-muted-foreground">Opening Hours</p>
-                  <p className="font-display text-lg mt-1">Mon – Sun · 9:00 am – 6:00 pm</p>
+                  <p className="font-display text-base sm:text-lg mt-1 whitespace-nowrap">Mon – Sun · 9:00 am – 6:00 pm</p>
                 </div>
               </div>
               <div className="flex gap-4">
