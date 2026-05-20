@@ -220,7 +220,7 @@ function Index() {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex items-center pt-28 pb-16 overflow-hidden">
+      <section id="home" className="relative flex items-center pt-24 pb-8 md:min-h-screen md:pt-28 md:pb-16 overflow-hidden">
         <div className="absolute inset-0 -z-10">
           <img src={brushesBg} alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.18] mix-blend-multiply" />
           <div className="absolute inset-0 gradient-soft" />
