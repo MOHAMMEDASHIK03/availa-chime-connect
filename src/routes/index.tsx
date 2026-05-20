@@ -61,7 +61,7 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: "Booking policy", a: "A small deposit secures your booking. Reschedules are welcome with 48 hours' notice. Bookings are confirmed once availability is approved by our team via WhatsApp or email." },
+  
   { q: "Deposit", a: "All bookings require a non-refundable deposit (booking fee) of $50-$150 to secure your event. No deposit means that your event date is not confirmed. Dates cannot be held and remain open until a deposit is made. The booking fee will come off the total amount due." },
   { q: "Booking fees", a: "All booking fees are non-refundable and non-transferable, whether partial or full. The balance for mobile bookings can be paid prior via bank transfer or the day of services, providing FUNDS CLEAR prior to commencement of services.\n\nIf you choose to pay in full in advance and then cancel, your payment is non-refundable.\n\nA booking fee is not an extra cost. It is deducted from the total cost. Booking fees are there to cover for example, you just decide to cancel, during which that time we hold your booking we refuse other work. So if you cancel there is a potential loss in income. Any further questions please inform us during your enquiry." },
   { q: "Cancellations", a: "Studio bookings which are cancelled after a deposit has been made will result in the loss of your deposit.\n\nIf your wedding is cancelled within 12 weeks of date, full payment is required. Changing your wedding date to a time I cannot accommodate will result in the loss of your booking fee.\n\nBooking fees are non-refundable and non-transferable, and the number of applications cannot be reduced after the deposit is paid." },
