@@ -245,7 +245,7 @@ function Index() {
             </button>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-8 animate-fade-up delay-500">
+          <div className="mt-8 md:mt-12 flex items-center justify-center gap-8 animate-fade-up delay-500">
             <div>
               <p className="font-display text-3xl text-rose-gold">500+</p>
               <p className="text-xs uppercase tracking-widest text-muted-foreground">Brides Styled</p>
