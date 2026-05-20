@@ -410,7 +410,7 @@ function Index() {
                   </button>
                   <div className={`grid transition-all duration-500 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                     <div className="overflow-hidden">
-                      <p className="px-6 pb-6 text-muted-foreground leading-relaxed">{f.a}</p>
+                      <p className="px-6 pb-6 text-muted-foreground leading-relaxed whitespace-pre-line">{f.a}</p>
                     </div>
                   </div>
                 </div>
