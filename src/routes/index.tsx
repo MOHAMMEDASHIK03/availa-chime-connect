@@ -267,7 +267,7 @@ function Index() {
       {/* ABOUT */}
       <section id="about" className="pt-10 pb-16 md:pt-12 md:pb-20 relative">
         <div className="max-w-3xl mx-auto px-5 md:px-8 text-center">
-          <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
+          <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">About the studio</p>
           <div className="mt-6 space-y-5 text-muted-foreground leading-relaxed text-left sm:text-center">
             <p>Glamupbykirthi was born from a love of artistry and the belief that every woman deserves to feel like the most luminous version of herself. From our intimate Docklands studio, we craft bespoke makeup and hair experiences that feel personal, refined and quietly indulgent.</p>
             <p>Founded by our certified Team, our atelier has styled over 500 brides and editorial faces across Melbourne — championing skin-first artistry, luxury products and an unhurried, considered approach to beauty.</p>
@@ -280,7 +280,7 @@ function Index() {
       <section id="services" className="pt-12 pb-24 md:pt-16 md:pb-32 gradient-soft">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">The Menu</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Signature Services</h2>
             <p className="mt-5 text-muted-foreground">A curated selection of makeup and hairstyling experiences, thoughtfully priced in AUD and tailored to every occasion.</p>
           </div>
@@ -313,7 +313,7 @@ function Index() {
       <section id="gallery" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Portfolio</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Portfolio</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Moments of <span className="italic font-script text-gradient-rose">Glamour</span></h2>
             <p className="mt-5 text-muted-foreground">A glimpse inside our studio — bridal beauty, soft glam and modern hairstyling from across Melbourne.</p>
           </div>
@@ -361,7 +361,7 @@ function Index() {
       <section id="reviews" className="py-24 md:py-32">
         <div className="max-w-5xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Kind Words</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Kind Words</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Loved by our <span className="italic font-script text-gradient-rose">clients</span></h2>
           </div>
 
@@ -396,7 +396,7 @@ function Index() {
       <section id="faq" className="py-24 md:py-32 gradient-soft">
         <div className="max-w-3xl mx-auto px-5 md:px-8">
           <div className="text-center">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Good to Know</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Good to Know</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Policies &amp; <span className="italic font-script text-gradient-rose">terms</span></h2>
           </div>
           <div className="mt-12 space-y-3">
@@ -424,7 +424,7 @@ function Index() {
       <section id="contact" className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="text-center max-w-2xl mx-auto">
-            <p className="text-xs tracking-[0.3em] uppercase text-rose-gold">Get in touch</p>
+            <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Get in touch</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Visit our <span className="italic font-script text-gradient-rose">studio</span></h2>
             <p className="mt-5 text-muted-foreground">Pop into our Docklands atelier or send us a message on WhatsApp — we'd love to hear from you.</p>
           </div>
