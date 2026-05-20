@@ -61,10 +61,10 @@ const testimonials = [
 ];
 
 const faqs = [
-  
-  { q: "Deposit", a: "All bookings require a non-refundable deposit (booking fee) of $50-$150 to secure your event. No deposit means that your event date is not confirmed. Dates cannot be held and remain open until a deposit is made. The booking fee will come off the total amount due." },
-  { q: "Booking fees", a: "All booking fees are non-refundable and non-transferable, whether partial or full. The balance for mobile bookings can be paid prior via bank transfer or the day of services, providing FUNDS CLEAR prior to commencement of services.\n\nIf you choose to pay in full in advance and then cancel, your payment is non-refundable.\n\nA booking fee is not an extra cost. It is deducted from the total cost. Booking fees are there to cover for example, you just decide to cancel, during which that time we hold your booking we refuse other work. So if you cancel there is a potential loss in income. Any further questions please inform us during your enquiry." },
-  { q: "Cancellations", a: "Studio bookings which are cancelled after a deposit has been made will result in the loss of your deposit.\n\nIf your wedding is cancelled within 12 weeks of date, full payment is required. Changing your wedding date to a time I cannot accommodate will result in the loss of your booking fee.\n\nBooking fees are non-refundable and non-transferable, and the number of applications cannot be reduced after the deposit is paid." },
+  { q: "Booking & Retainer", a: "Securing Your Date: All bookings are secured only upon payment of a non-refundable booking fee.\n\nFirst-Come Basis: Dates are held on a strict first-come, first-served basis. Verbal agreements or email inquiries do not secure a date until the retainer is processed." },
+  { q: "Cancellation & Rescheduling", a: "Because your time slot is reserved exclusively for you, our cancellation policy is as follows:\n\nGeneral Cancellations: The booking fee is strictly non-refundable and non-transferable.\n\nWithin 14–30 days of event: 50% of the total quoted amount is due.\n\nWithin 14 days of event: 100% of the total quoted amount is due." },
+  { q: "Travel & Logistics", a: "Travel Fees: Travel fees apply for locations outside the immediate Melbourne CBD. This will be calculated and provided in your personalized quote." },
+  { q: "Consent & Media", a: "Photography: We love showcasing our work! Unless you opt-out in writing, images taken during your session may be used for marketing purposes on our website or social media channels." },
 ];
 
 const TIME_SLOTS = ["9:00 am – 11:00 am", "2:00 pm – 4:00 pm", "5:00 pm – 6:00 pm"];
