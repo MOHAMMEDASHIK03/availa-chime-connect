@@ -151,9 +151,32 @@ function Index() {
 
     // Open WhatsApp to owner with prefilled details
     window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, "_blank", "noopener,noreferrer");
-    // Open mailto to owner as backup notification channel
-    const mailto = `mailto:${OWNER_EMAIL}?subject=${encodeURIComponent("New booking request — Glamupbykirthi")}&body=${encodeURIComponent(msg)}`;
-    setTimeout(() => { window.open(mailto, "_self"); }, 400);
+
+    // Send email to owner via EmailJS
+    try {
+      await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          service_id: "service_5m7wlij",
+          template_id: "template_a9a6e25",
+          user_id: "BcbJFXfuNUQwHRKai",
+          template_params: {
+            customer_name: customerName.trim(),
+            customer_phone: phone.trim(),
+            customer_address: locationType === "home" ? address.trim() : "At the studio",
+            booking_date: bookingDate,
+            booking_time: bookingTime,
+            location_type: locationType === "home" ? "Home visit" : "At the studio",
+            services: servicesPayload.map((s) => `${s.name} - AUD $${s.price}`).join(", ") + ` | Total: AUD $${total}`,
+            notes: `Booking ID: ${data.id.slice(0, 8)}`,
+          },
+        }),
+      });
+    } catch (e) {
+      console.error("EmailJS send failed", e);
+    }
+
 
     setBookOpen(false);
     setSelected([]);
