@@ -315,7 +315,7 @@ function Index() {
           <div className="text-center max-w-2xl mx-auto">
             <p className="text-sm md:text-base tracking-[0.3em] uppercase text-rose-gold">Portfolio</p>
             <h2 className="mt-4 font-display text-4xl md:text-5xl lg:text-6xl">Moments of <span className="italic font-script text-gradient-rose">Glamour</span></h2>
-            <p className="mt-5 text-muted-foreground">A glimpse inside our studio — bridal beauty, soft glam and modern hairstyling from across Melbourne.</p>
+            <p className="mt-5 text-muted-foreground">A glimpse inside our studio — bridal beauty, soft glam and modern hairstyling across Melbourne.</p>
           </div>
 
           <div className="mt-14 grid grid-cols-2 md:grid-cols-4 auto-rows-[220px] md:auto-rows-[260px] gap-3 md:gap-4">
