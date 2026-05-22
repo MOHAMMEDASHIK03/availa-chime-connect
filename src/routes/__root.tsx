@@ -15,7 +15,9 @@ function NotFoundComponent() {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
         <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
+        <h2 className="mt-4 text-xl font-semibold text-foreground">
+          Page not found
+        </h2>
         <p className="mt-2 text-sm text-muted-foreground">
           The page you're looking for doesn't exist or has been moved.
         </p>
@@ -32,7 +34,13 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
   console.error(error);
   const router = useRouter();
 
@@ -43,7 +51,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           This page didn't load
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+          Something went wrong on our end. You can try refreshing or head back
+          home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -67,24 +76,60 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "glamupkirthimakeup" },
-      { name: "description", content: "Cloud Sync Admin synchronizes website content and admin dashboard changes in real-time." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "glamupkirthimakeup" },
-      { property: "og:description", content: "Cloud Sync Admin synchronizes website content and admin dashboard changes in real-time." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "glamupkirthimakeup" },
-      { name: "twitter:description", content: "Cloud Sync Admin synchronizes website content and admin dashboard changes in real-time." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4c9e80d6-c1ab-4609-8f56-637e370bcad3/id-preview-62678eee--82f7cf04-9223-4e58-8410-b90c11f55869.lovable.app-1779115992990.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4c9e80d6-c1ab-4609-8f56-637e370bcad3/id-preview-62678eee--82f7cf04-9223-4e58-8410-b90c11f55869.lovable.app-1779115992990.png" },
+
+      { title: "Glamup Kirthi Makeup" },
+
+      {
+        name: "description",
+        content:
+          "Professional Bridal Makeup, Party Makeup and Hairstyling Services by Glamup Kirthi Makeup.",
+      },
+
+      {
+        name: "author",
+        content: "Glamup Kirthi Makeup",
+      },
+
+      {
+        property: "og:title",
+        content: "Glamup Kirthi Makeup",
+      },
+
+      {
+        property: "og:description",
+        content:
+          "Professional Bridal Makeup, Party Makeup and Hairstyling Services by Glamup Kirthi Makeup.",
+      },
+
+      {
+        property: "og:type",
+        content: "website",
+      },
+
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
+
+      {
+        name: "twitter:title",
+        content: "Glamup Kirthi Makeup",
+      },
+
+      {
+        name: "twitter:description",
+        content:
+          "Professional Bridal Makeup, Party Makeup and Hairstyling Services by Glamup Kirthi Makeup.",
+      },
     ],
+
     links: [
       {
         rel: "stylesheet",
@@ -92,6 +137,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
   }),
+
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
