@@ -542,7 +542,17 @@ function Index() {
         </div>
         <div className="max-w-7xl mx-auto px-5 md:px-8 mt-12 pt-6 border-t border-black/10 flex flex-col sm:flex-row justify-between gap-3 text-xs text-black">
           <p>© {new Date().getFullYear()} Glamupbykirthi. All rights reserved.</p>
-          <p>Crafted with <Heart className="inline h-3 w-3 text-rose-gold fill-current" /> in Melbourne, Australia.</p>
+             <p>
+  Designed & Developed by{" "}
+  <a
+    href="https://galvatronixtechnologies.in"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="font-medium hover:underline"
+  >
+    Galvatronix Technologies
+  </a>
+</p>
         </div>
       </footer>
 
